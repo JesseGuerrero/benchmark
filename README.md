@@ -18,13 +18,11 @@
 - Add custom components using HTML or even other web frameworks like React, Vue, or Svelte.
 - Built with [Astro](https://astro.build/), [Tailwind CSS](https://tailwindcss.com/), [MDX](https://mdxjs.com/), and [Typescript](https://www.typescriptlang.org/).
 
-## Real-world examples
-
-- [Lossy Compression With Pretrained Diffusion Models](https://jeremyiv.github.io/diffc-project-page/)
-- [CLIP-RT: Learning Language-Conditioned Robotic Policies from Natural Language Supervision](https://clip-rt.github.io/)
-- [StochSync: Stochastic Diffusion Synchronization for Image Generation in Arbitrary Spaces](https://stochsync.github.io/)
-- [CRESSim: Simulator for Advancing Surgical Autonomy](https://tbs-ualberta.github.io/CRESSim/)
-- [PCO: Precision-Controllable Offset Surfaces with Sharp Features](https://alan-leo-wong.github.io/SIGASIA24-PCO-ProjectPage/)
+## Real-world Applications
+- [Esri Maps SDK](https://jeremyiv.github.io/diffc-project-page/)
+- [DeckGL](https://clip-rt.github.io/)
+- [Cesium](https://stochsync.github.io/)
+- [Omniverse](https://tbs-ualberta.github.io/CRESSim/)
 
 ## Usage
 
