@@ -1,9 +1,9 @@
 
-# Research project page template
+# {Title}
 
 This is a template you can use to build a project page for your research paper, adapted from the original [Nerfies page](https://nerfies.github.io/). It's designed to be easy to set up for those without web development experience, but web developers will appreciate that it's flexible and built with modern, familiar technologies. See a live demo of the template [here](https://research-template.roman.technology).
 
-<img src="public/screenshot-light.png" width="48%" /> <img src="https://i.imgur.com/G735JWp.png" width="48%" />
+<img src="https://i.imgur.com/AGNpQJa.png" width="32%" /> <img src="https://i.imgur.com/aCAUJjx.png" width="32%" /><img src="https://i.imgur.com/dkjJvBC.png" width="32%" />
 
 ## Features
 
