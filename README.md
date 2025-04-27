@@ -18,15 +18,9 @@
 - Add custom components using HTML or even other web frameworks like React, Vue, or Svelte.
 - Built with [Astro](https://astro.build/), [Tailwind CSS](https://tailwindcss.com/), [MDX](https://mdxjs.com/), and [Typescript](https://www.typescriptlang.org/).
 
-## Real-world Applications
-- [Esri Maps SDK](https://jeremyiv.github.io/diffc-project-page/)
-- [DeckGL](https://clip-rt.github.io/)
-- [Cesium](https://stochsync.github.io/)
-- [Omniverse](https://tbs-ualberta.github.io/CRESSim/)
-
 ## Usage
 
-Want help setting it up? Please schedule a call with me [here](https://cal.com/romanhauksson/meeting), and I'll personally walk you through making your project page live! I want to talk to potential users to figure out pain points and features to add.
+Run Landsat imagery into the checkpoints given or train your own model using this repository. Take the inferred Tif and place it into your application.
 
 1. [Install Node.js](https://nodejs.org/en/download/package-manager).
 1. Click "Use this template" to make a copy of this repository and then clone it, or just clone it directly.
@@ -36,6 +30,14 @@ Want help setting it up? Please schedule a call with me [here](https://cal.com/r
 1. Host the website using [GitHub Pages](https://pages.github.com/), [Vercel](https://vercel.com), [Netlify](https://www.netlify.com/), or any other static site hosting service.
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/romanhauksson/academic-project-astro-template) [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FRomanHauksson%2Facademic-project-astro-template)
+
+## Real-world Application Examples
+Place the inference tif in any of these frameworks...
+- [Esri Maps SDK](https://jeremyiv.github.io/diffc-project-page/)
+- [DeckGL](https://clip-rt.github.io/)
+- [Cesium](https://stochsync.github.io/)
+- [Omniverse](https://tbs-ualberta.github.io/CRESSim/)
+- Etc.
 
 ### Icons
 
