@@ -1,9 +1,14 @@
-
 # {Title}
 
-This is a template you can use to build a project page for your research paper, adapted from the original [Nerfies page](https://nerfies.github.io/). It's designed to be easy to set up for those without web development experience, but web developers will appreciate that it's flexible and built with modern, familiar technologies. See a live demo of the template [here](https://research-template.roman.technology).
+**Abstract**: Land Surface Temperature (LST) is a key metric for heat island mitigation and cool urban planning meant to deter the effects of climate change for underrepresented areas. This work sets a free and open dataset benchmark for measuring the performance of models to predict a future LST by a monthly basis. According to an extensive literature review search, no other benchmarks exists for monthly temperature at a consistent moderate resolution of 30m^2. The dataset was scrapped from all U.S cities above 90 square miles resulting in DEM, Land Cover, NDBI, NDVI, NDWI, NDBI & LST for 107 cities. Metrics for temperature prediction include LST and a heat index 1-25 to generalize to individual cities. A baseline measurement was taken with the transformer architecture at 2.6 RMSE of a 1-25 Heat Index and 9.71F RMSE for LST prediction for all 107 cities in the United States. Surface temperature can be effectively predicted and generalized using only a few key variables. SOTA vision architecture, the choice of data and data augmentation contribute to effective pixel-wise prediction. 
 
-<img src="https://i.imgur.com/AGNpQJa.png" width="32%" /> <img src="https://i.imgur.com/G735JWp.png" width="32%" /><img src="https://i.imgur.com/dkjJvBC.png" width="32%" />
+<div align="center">
+  <p float="left">
+    <img src="https://i.imgur.com/AGNpQJa.png" width="32%" style="border: 1px solid #ddd; border-radius: 4px; margin: 0 0.5%; box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);" />
+    <img src="https://i.imgur.com/G735JWp.png" width="32%" style="border: 1px solid #ddd; border-radius: 4px; margin: 0 0.5%; box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);" />
+    <img src="https://i.imgur.com/dkjJvBC.png" width="32%" style="border: 1px solid #ddd; border-radius: 4px; margin: 0 0.5%; box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);" />
+  </p>
+</div>
 
 ## Features
 
