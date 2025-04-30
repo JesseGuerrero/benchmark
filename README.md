@@ -20,60 +20,20 @@
 ## Usage
 
 Run Landsat imagery into the checkpoints given or train your own model using this repository. Take the inferred Tif and place it into your application.
-
-1. [Install Node.js](https://nodejs.org/en/download/package-manager).
-1. Click "Use this template" to make a copy of this repository and then clone it, or just clone it directly.
-1. Run `npm install` from the root of the project to install dependencies.
-1. Edit the content in `/src/pages/index.mdx`, and remember to update the favicon and social link thumbnail (optional). In the frontmatter in `index.mdx`, they are set to `favicon.svg` and `screenshot-light.png` respectively, which refer to files in `/public/`.
-1. Run `npm run dev` to see a live preview of your page while you edit it.
-1. Host the website using [GitHub Pages](https://pages.github.com/), [Vercel](https://vercel.com), [Netlify](https://www.netlify.com/), or any other static site hosting service.
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/romanhauksson/academic-project-astro-template) [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FRomanHauksson%2Facademic-project-astro-template)
+1. Download checkpoints, use SegFormer 1, 3 month
+2. Open inference script
+3. Place Landsat imagery
+4. Run inference
+5. Place combined TIF into application
 
 ## Real-world Application Examples
 Place the inference tif in any of these frameworks...
-- [Esri Maps SDK](https://jeremyiv.github.io/diffc-project-page/)
-- [DeckGL](https://clip-rt.github.io/)
-- [Cesium](https://stochsync.github.io/)
-- [Omniverse](https://tbs-ualberta.github.io/CRESSim/)
+- [Esri Maps SDK](https://developers.arcgis.com/javascript/latest/)
+- [DeckGL](https://deck.gl/)
+- [Cesium](https://cesium.com/)
+- [Omniverse](https://www.nvidia.com/en-us/omniverse/)
+- [Unity](https://unity.com/)
 - Etc.
-
-### Icons
-
-This template uses [Astro Icon](https://www.astroicon.dev/) library.
-
-To use a custom icon:
-
-1. Search on [Iconify](https://icon-sets.iconify.design/) to find the icon you want. For example, the Hugging Face icon is `simple-icons:huggingface`, from the Simple Icons icon set.
-1. Install the corresponding icon set: `npm install @iconify-json/simple-icons`.
-1. If you're using the icon in one of the link buttons, add it in one of the objects in the `links` prop of the `<Header />` component in `index.mdx`:
-
-```mdx
-    {
-      name: "Hugging Face",
-      url: "https://huggingface.co/",
-      icon: "simple-icons:huggingface"
-    }
-```
-
-Or, to use it anywhere in an Astro component or MDX file:
-
-```mdx
-import { Icon } from "astro-icon/components";
-
-<Icon name={"simple-icons:huggingface"} />
-```
-
-### Notes
-
-- If you're using VS Code, I recommend installing the [Astro extension](https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode) to get IntelliSense, syntax highlighting, and other features.
-- When people share the link to your project on social media, it will often appear as a "link preview" based on the title, description, thumbnail, and favicon you configured. Double check that these previews look right using [this tool](https://linkpreview.xyz/).
-- The Nerfies page uses the Google Sans font, which is licensed by Google, so unfortunately, I had to change it to a different font instead (I picked Noto Sans).
-
-## Alternative templates
-
-- [Clarity: A Minimalist Website Template for AI Research](https://shikun.io/projects/clarity) by Shikun Liu. Beautiful and careful design that's distinct from the original Nerfies page. Editable via an HTML template and SCSS.
-- [Academic Project Page Template](https://denkiwakame.github.io/academic-project-template/) by Mai Nishimura. Built with React and UIKit and editable with Markdown in a YAML file.
 
 ## Credits
 
