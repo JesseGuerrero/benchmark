@@ -10,13 +10,12 @@
   </p>
 </div>
 
-## Features
+## Links
 
-- Easily edit the content in Markdown instead of HTML.
-- Quick-to-load, works with mobile devices, accessible, and SEO-friendly.
-- Includes out-of-the-box components for the header, figures, image comparison sliders, LaTeX equations, two-column layouts, code blocks (with syntax highlighting), small caps, videos, and YouTube embeds.
-- Add custom components using HTML or even other web frameworks like React, Vue, or Svelte.
-- Built with [Astro](https://astro.build/), [Tailwind CSS](https://tailwindcss.com/), [MDX](https://mdxjs.com/), and [Typescript](https://www.typescriptlang.org/).
+- Paper: -- 
+- Checkpoints: https://bit.ly/4jP7z91
+- Data: https://huggingface.co/datasets/JesseGuerrero/LandsatTemperature
+- Code: This repository
 
 ## Usage
 
