@@ -1,5 +1,4 @@
 # {Title}
-
 **Abstract**: Land Surface Temperature (LST) is a key metric for heat island mitigation and cool urban planning meant to deter the effects of climate change for underrepresented areas. This work sets a free and open dataset benchmark for measuring the performance of models to predict a future LST by a monthly basis. According to an extensive literature review search, no other benchmarks exists for monthly temperature at a consistent moderate resolution of 30m\textsuperscript{2}. The dataset was scrapped from all U.S cities above 90 square miles resulting in DEM, Land Cover, NDBI, NDVI, NDWI, NDBI \& LST for 103 cities. Metrics for temperature prediction include LST and a heat index 1-25 to generalize to individual cities. A baseline measurement was taken with the transformer architecture at 2.6 RMSE of a 1-25 Heat Index and 9.71F RMSE for LST prediction for all 103 cities in the United States. Surface temperature can be effectively predicted and generalized using only a few key variables. SOTA vision architecture, the choice of data and data augmentation contribute to effective pixel-wise prediction.
 
 <div align="center">
@@ -11,14 +10,12 @@
 </div>
 
 ## Links
-
 - Paper: -- 
 - Checkpoints: https://bit.ly/4jP7z91
 - Data: https://huggingface.co/datasets/JesseGuerrero/LandsatTemperature
 - Code: This repository
 
 ## Usage
-
 Run Landsat imagery into the checkpoints given or train your own model using this repository. Take the inferred Tif and place it into your application.
 1. Download checkpoints, use SegFormer 1, 3 month
 2. Open inference script
@@ -35,6 +32,17 @@ Place the inference tif in any of these frameworks...
 - [Unity](https://unity.com/)
 - Etc.
 
-## Credits
+## Citation
+If you use this work please cite our [paper --]():
 
-This template was adapted from Eliahu Horwitz's [Academic Project Page Template](https://github.com/eliahuhorwitz/Academic-project-page-template), which was adapted from Keunhong Park's [project page for _Nerfies_](https://nerfies.github.io/). It's licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).
+```bibtex
+@article{--,
+    author = {--},
+    doi = {--},
+    journal = {--},
+    month = --,
+    title = {--},
+    url = {--},
+    year = {--}
+}
+```
