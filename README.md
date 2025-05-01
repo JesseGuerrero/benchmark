@@ -117,7 +117,7 @@
 <td></td>
 <td></td>
 <td>11.99</td>
-<td>11.81</td>
+<td>11.8</td>
 <td>Segformer</td>
 <td></td>
 <td></td>
