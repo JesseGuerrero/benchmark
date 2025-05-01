@@ -14,6 +14,7 @@
 - Checkpoints: https://bit.ly/4jP7z91
 - Data: https://huggingface.co/datasets/JesseGuerrero/LandsatTemperature
 - Code: This repository
+- Visualization: https://github.com/JesseGuerrero/LST-Visualization
 
 ## Usage
 Run Landsat imagery into the checkpoints given or train your own model using this repository. Take the inferred Tif and place it into your application.
