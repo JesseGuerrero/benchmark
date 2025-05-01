@@ -122,7 +122,7 @@
 <td></td>
 <td></td>
 <td>2.88</td>
-<td>2.86</td>
+<td>2.9</td>
 </tr>
 </tbody>
 </table>
