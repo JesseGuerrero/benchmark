@@ -20,7 +20,7 @@ def notifySelf(body):
         else:
             print(body)
     except Exception as e:
-        print("unable to send text...")
+        print("unable to send email...")
         print(e)
 
 

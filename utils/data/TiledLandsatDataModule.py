@@ -62,7 +62,6 @@ class TiledGeotiffDataset(Dataset):
             'NDVI.tif': (-1.0, 1.0),            # NDVI range
             'NDWI.tif': (-1.0, 1.0),            # NDWI range
             'NDBI.tif': (-1.0, 1.0),    
-            'LSTInput.tif': (-80.9723, 211.73), 
             'LST.tif': (-80.9723, 211.73),             # Typical LST range in Fahrenheit
             'HeatIndex.tif': (1, 25)
         }
@@ -135,11 +134,10 @@ class TiledGeotiffDataset(Dataset):
             'NDVI.tif': (-1.0, 1.0),            # NDVI range
             'NDWI.tif': (-1.0, 1.0),            # NDWI range
             'NDBI.tif': (-1.0, 1.0),   
-            'LSTInput.tif': (-80.9723, 211.73), 
             'LST.tif': (-80.9723, 211.73),             # Typical LST range in Fahrenheit
             'HeatIndex.tif': (1, 25)
         }
-        input_keys = ['Albedo.tif', 'DEM.tif', 'Land_Cover.tif', 'NDVI.tif', 'NDWI.tif', 'NDBI.tif', 'LSTInput.tif']
+        input_keys = ['Albedo.tif', 'DEM.tif', 'Land_Cover.tif', 'NDVI.tif', 'NDWI.tif', 'NDBI.tif']
         
         if isinstance(sample, dict):
             # Denormalize each input channel

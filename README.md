@@ -137,12 +137,25 @@
 - Visualization: https://github.com/JesseGuerrero/LST-Visualization
 
 ## Usage
-Run Landsat imagery into the checkpoints given or train your own model using this repository. Take the inferred Tif and place it into your application.
-1. Download checkpoints, use SegFormer 1, 3 month
-2. Open inference script
-3. Place Landsat imagery
-4. Run inference
-5. Place combined TIF into application
+Start training your own Landsat models:<br>
+*Requires WandB: https://wandb.ai/
+1. Clone repository
+2. Install anaconda
+3. Run download-dataset.sh/download-dataset.bat
+4. Run "conda env create -f environment.yml"
+5. Install PyTorch 2.6.0 from the PyTorch website for your CUDA/OS version
+6. Run Cell 1 & Cell 2 of preprocess.ipynb
+  - Specify months-ahead
+  - Debug means only year 2014 to train a small subset
+7. Open train.ipynb and set hyperparameters
+  - The months ahead should be the same as the preprocess. The naming scheme is searched preprocessed_{i}monthsahead
+  - The 12 experiements come in the first cell
+  - You will have to setup WandB on your machine for model versioning....
+  - Run the first 5 cells after setting hyperparameters to train
+8. Run your trained inference in inference.ipynb 
+  - Set the model checkpoint path
+  - Set hyperparameters to same from train.ipynb
+  - Run the first 5 cells
 
 ## Real-world Application Examples
 Place the inference tif in any of these frameworks...
