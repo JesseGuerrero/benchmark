@@ -328,14 +328,14 @@ class TiledLandsatDataModule(pl.LightningDataModule):
         albedo_files = []
         x_dir = os.path.join(self.data_dir, f'preprocess_{self.monthsAhead}monthsahead', 'X', 'less5CloudCover')
         for file_path in tqdm(self.get_file_paths(x_dir), desc='Gathering scenes(Sort by City)...'):
-            date = file_path.split('/')[-2]
+            date = file_path.split(os.sep)[-2]
             for year in self.includeYears:
                 if year in date:
                     if 'Albedo' in file_path:
                         albedo_files.append(file_path)
         
         for albedo_path in tqdm(albedo_files, desc='Preparing scene by city...'):
-            fileParts = albedo_path.split('/')
+            fileParts = albedo_path.split(os.sep)
             date, city = fileParts[-2], fileParts[-3]
             scene_files = [f for f in os.listdir(os.path.dirname(albedo_path))
                            if os.path.isfile(os.path.join(os.path.dirname(albedo_path), f))]
@@ -343,11 +343,11 @@ class TiledLandsatDataModule(pl.LightningDataModule):
             for raster_file in scene_files:
                 raster_path = os.path.join(os.path.dirname(albedo_path), raster_file)
                 raster_dict[raster_file] = raster_path
-            date = albedo_path.split('/')[-2]
+            date = albedo_path.split(os.sep)[-2]
             date_object = datetime.strptime(date, "%Y-%m")
             date_object = date_object + relativedelta(months=self.monthsAhead)
             dateAhead = date_object.strftime("%Y-%m")
-            lst_path = albedo_path.replace('/X/', '/y/').replace(date, dateAhead).replace('Albedo.tif', 'LST.tif')
+            lst_path = albedo_path.replace(f'{os.sep}X{os.sep}', f'{os.sep}y{os.sep}').replace(date, dateAhead).replace('Albedo.tif', 'LST.tif')
             if not os.path.exists(lst_path):
                 continue
             raster_dict['LST.tif'] = lst_path 
@@ -381,7 +381,7 @@ class TiledLandsatDataModule(pl.LightningDataModule):
 
         x_dir = os.path.join(self.data_dir, f'preprocess_{self.monthsAhead}monthsahead', 'X', 'less5CloudCover')
         for file_path in tqdm(self.get_file_paths(x_dir), desc='Gathering scenes (Sort by Random Scene)...'):
-            date = file_path.split('/')[-2]
+            date = file_path.split(os.sep)[-2]
             for year in self.includeYears:
                 if year in date:
                     if 'Albedo' in file_path:
@@ -396,11 +396,11 @@ class TiledLandsatDataModule(pl.LightningDataModule):
                 raster_path = os.path.join(os.path.dirname(albedo_path), raster_file)
                 raster_dict[raster_file] = raster_path
 
-            date = albedo_path.split('/')[-2]
+            date = albedo_path.split(os.sep)[-2]
             date_object = datetime.strptime(date, "%Y-%m")
             date_object = date_object + relativedelta(months=self.monthsAhead)
             dateAhead = date_object.strftime("%Y-%m")
-            lst_path = albedo_path.replace('/X/', '/y/').replace(date, dateAhead).replace('Albedo.tif', 'LST.tif')
+            lst_path = albedo_path.replace(f'{os.sep}X{os.sep}', f'{os.sep}y{os.sep}').replace(date, dateAhead).replace('Albedo.tif', 'LST.tif')
             if not os.path.exists(lst_path):
                 continue
             raster_dict['LST.tif'] = lst_path
