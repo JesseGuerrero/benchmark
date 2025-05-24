@@ -65,7 +65,7 @@ class TiledGeotiffDataset(Dataset):
             'LST.tif': (-80.9723, 211.73),             # Typical LST range in Fahrenheit
             'HeatIndex.tif': (1, 25)
         }
-        self.input_keys = ['Albedo.tif', 'DEM.tif', 'Land_Cover.tif', 'NDVI.tif', 'NDWI.tif', 'NDBI.tif', 'LSTInput.tif']
+        self.input_keys = ['Albedo.tif', 'DEM.tif', 'Land_Cover.tif', 'NDVI.tif', 'NDWI.tif', 'NDBI.tif']
         self.output_keys = ['LST.tif', 'HeatIndex.tif']
 
 

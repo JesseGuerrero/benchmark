@@ -1,4 +1,3 @@
-# %%
 from torchgeo.trainers import PixelwiseRegressionTask
 import torch
 import pytorch_lightning as pl
@@ -37,7 +36,7 @@ if len(sys.argv) > 1:
     deviceCount = int(sys.argv[3])
 config = {
     "experiment_name": "test",
-    "debug": True,
+    "debug": False,
     "by_city": False,
     "months_ahead": 1,
     "tile_size": 128,
@@ -110,9 +109,7 @@ if i == 12:
 if i <= -1:
     pass
 else:
-    config["experiment_name"] = f'Exp. #{i}: {config["model"]},Month {config["months_ahead"]}, {config["backbone"]}'
-
-# %%
+    config["experiment_name"] = f'Exp. #{i}-6 Channel: {config["model"]},Month {config["months_ahead"]}, {config["backbone"]}'
 
 notifySelf(f'Starting {config["experiment_name"]}!')
 wandb_logger = WandbLogger(
@@ -176,9 +173,9 @@ trainer = pl.Trainer(
     num_sanity_val_steps=2,
     logger=wandb_logger,
     callbacks=[checkpoint_callback, percentage_callback],
-    # devices=deviceCount,                         # Use all 4 GPUs
+    devices=deviceCount,                         # Use all 4 GPUs
     accelerator="gpu",                 # Use GPU acceleration
-    # strategy="ddp",                    # Use DistributedDataParallel
+    strategy="ddp",                    # Use DistributedDataParallel
     precision="16-mixed"               # Add mixed precision for memory efficiency
 )                             
 
@@ -201,168 +198,5 @@ data_module.setup()
 # Train model
 trainer.fit(model=model, datamodule=data_module)
 
-# Register the best model as a W&B artifact
-best_model_path = checkpoint_callback.best_model_path
-if best_model_path and os.path.exists(best_model_path):
-    artifact = wandb.Artifact(
-        name=f"{best_model_path.split('/')[-1].replace('=','.')}", 
-        type="model",
-        description=f"Best model at {best_model_path.split('/')[-1]}" 
-    )
-    artifact.add_file(best_model_path)
-    wandb_logger.experiment.log_artifact(artifact)
-
 notifySelf(f"Finished {config['experiment_name']}...")
-
-del trainer
-del data_module
-# Force garbage collection and clear CUDA cache
-import gc
-gc.collect()
-torch.cuda.empty_cache()
-# After deleting objects
-for i in range(torch.cuda.device_count()):
-    with torch.cuda.device(i):
-        torch.cuda.empty_cache()
-del model
-del wandb_logger
-del checkpoint_callback
-
-# Force garbage collection and clear CUDA cache
-import gc
-for obj in gc.get_objects():   
-    try:
-        if torch.is_tensor(obj) and obj.device.type == 'cuda':
-            del obj
-    except:
-        pass
-gc.collect()
-
-# After deleting objects
-for j in range(torch.cuda.device_count()):
-    with torch.cuda.device(j):
-        x = torch.zeros(1024, 1024, 1024, device=f'cuda:{j}')
-        del x
-        torch.cuda.empty_cache()
-        torch.cuda.reset_peak_memory_stats()
-        torch.cuda.reset_accumulated_memory_stats()
-
-# 4. Wait for GPU processes to complete
-torch.cuda.synchronize()
-
-# Print memory stats for debugging
-if torch.cuda.is_available():
-    print(f"Loop {i} completed. CUDA memory allocated: {torch.cuda.memory_allocated() / 1e9:.2f} GB")
-    print(f"CUDA memory reserved: {torch.cuda.memory_reserved() / 1e9:.2f} GB")
-notifySelf("Batch experiment ended.")
-
-# %%
-model = LSTNowcaster.load_from_checkpoint(
-    checkpoint_path=best_model_path,
-)
-
-trainer.test(model=model, datamodule=data_module)
-
 wandb.finish()
-
-# %%
-import os
-import torch
-import wandb
-from pytorch_lightning.loggers import WandbLogger
-from utils.model import LSTNowcaster
-from utils.data.TiledLandsatDataModule import TiledLandsatDataModule
-
-# Define which model checkpoint to test
-# You can either specify a specific checkpoint or use the best one from a previous run
-for checkpoint_path in [
-    "/home/ubuntu/heat-island-test/wandb/heat-island/checkpoints/up47iayb_April15/up47iayb_April15_epoch=059_val_rmse_F=17.0594.ckpt"
-]:
-
-    # Initialize test configuration
-    test_config = {
-        "experiment_name": "Test OneFormer Debug",
-        "debug": True,  # Set to False for full test
-        "by_city": False,
-        "months_ahead": 3,
-        "tile_size": 128,
-        "tile_overlap": 0.0,
-        "model": "segformer",
-        "backbone": "b5",
-        "dataset": "pure_landsat",
-        "batch_size": 1,  # Can be larger than training since no gradients are stored
-        "in_channels": 6
-    }
-
-    # Get the run ID from your checkpoint path
-    run_id = checkpoint_path.split('/')[-2].split('_')[0]  # Extracts the run ID from the checkpoint path
-
-    # Initialize WandB logger that continues the same run
-    test_logger = WandbLogger(
-        project="heat-island",
-        id=run_id,  # Use the same run ID to continue logging to the same run
-        resume="must",  # Force resume the existing run
-        save_dir="./wandb",
-    )
-
-    # Set up data module for testing
-    data_module = TiledLandsatDataModule(
-        data_dir="./Data",
-        monthsAhead=test_config["months_ahead"],
-        batch_size=test_config["batch_size"],
-        num_workers=4,
-        byCity=test_config["by_city"],
-        debug=test_config["debug"],
-        tile_size=test_config["tile_size"],
-        tile_overlap=test_config["tile_overlap"],
-        augment=False,  # No augmentation during testing
-        seedForScene=1,  # Consistent seed for reproducibility
-        includeYears=["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023"]
-    )
-    data_module.setup()  # Explicitly prepare the test data
-
-    # Initialize the model with the same architecture used during training
-    model = LSTNowcaster.load_from_checkpoint(
-        checkpoint_path,
-        model=test_config["model"],
-        backbone=test_config["backbone"],
-        in_channels=test_config["in_channels"]
-    )
-
-    # Set model to evaluation mode
-    model.eval()
-
-    # Initialize trainer specifically for testing
-    from pytorch_lightning import Trainer
-    test_trainer = Trainer(
-        logger=test_logger,
-        enable_progress_bar=True,
-        enable_model_summary=True,
-        deterministic=True
-    )
-
-    # Run test
-    test_results = test_trainer.test(model=model, datamodule=data_module)
-
-    # Log detailed test metrics
-    test_logger.experiment.log({
-        "test_results": test_results[0],
-        "test_rmse_F": test_results[0].get("test_rmse_F", None),
-        "test_mae_F": test_results[0].get("test_mae_F", None)
-    })
-
-    # Clean up resources
-    del model
-    del test_trainer
-    del data_module
-    del test_logger
-
-    # Force garbage collection and clear CUDA cache
-    import gc
-    gc.collect()
-    torch.cuda.empty_cache()
-
-    print(f"Test complete. Results: {test_results}")
-    wandb.finish()
-
-
